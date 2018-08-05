@@ -18,8 +18,7 @@ def emp_login(request):
             login(request, user)
             return HttpResponseRedirect('/dashboard/')
         else:
-            message = "User credential is not found"
-            return HttpResponse(message)
+            return HttpResponse("User credential is not found")
     return render(request, 'emplogin.html')
 
 def emp_logout(request):
