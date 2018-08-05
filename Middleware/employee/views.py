@@ -14,11 +14,9 @@ def emp_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                message = "Successfully logged in"
-                return HttpResponseRedirect('/dashboard/')
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect('/dashboard/')
         else:
             message = "User credential is not found"
             return HttpResponse(message)
