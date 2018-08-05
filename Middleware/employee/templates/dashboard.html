@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Dashboard </title>
+	</head>
+	<body>
+		Hi <strong> {{ username }} </strong>, You are successfully logged in. You can view <strong> {{ groupname }} </strong> group of employee details. <BR> <BR>
+		<table border="1">
+			<thead>
+				<tr>
+					<th> Name </th>
+					<th> EmpID </th>
+					<th> Department </th>
+				</tr>
+			</thead>
+			{% for emp in emp_list %}
+		        <tr>
+		            <td>{{ emp.name }} </td>
+		            <td>{{ emp.emp_id }}</td>
+		            <td>{{ emp.department }}</td>
+		        </tr>
+		    {% endfor %}
+		</table>
+		<BR> <BR>
+		For Logout click Below button. <BR> <BR>
+		<form id="logout" method="post" action="/logout/">{% csrf_token %}
+			<input type="submit" value="Sign out">
+		</form>
+	</body>
+</html>
